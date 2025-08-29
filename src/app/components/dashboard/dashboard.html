@@ -1,0 +1,66 @@
+<div class="dashboard-container">
+  <h1>📊 Booking Dashboard</h1>
+
+  <div class="stats-grid">
+    <div class="stat-card total">
+      <h3>Total Bookings</h3>
+      <p>{{ bookings.length }}</p>
+    </div>
+
+    <div class="stat-card upcoming">
+      <h3>Upcoming Events</h3>
+      <p>{{ upcomingBookings }}</p>
+    </div>
+
+    <div class="stat-card pending">
+      <h3>Pending</h3>
+      <p>{{ pendingBookings }}</p>
+    </div>
+  </div>
+
+  <div class="table-container">
+    <h2>All Bookings</h2>
+    <table>
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Hall</th>
+          <th>User</th>
+          <th>Date</th>
+          <th>Status</th>
+          <th>Action</th>
+        </tr>
+      </thead>
+      <tbody>
+        
+        <tr *ngFor="let booking of bookings; let i = index">
+  <td>{{ booking.id }}</td>
+  <td>{{ booking.hall?.name || 'Hall Deleted' }}</td>
+  <td>{{ booking.customerName }}</td>
+  <td>{{ booking.bookingDate | date:'mediumDate' }}</td>
+  <td>
+    <span class="status" [ngClass]="booking.status?.toLowerCase()">
+      {{ booking.status || 'N/A' }}
+    </span>
+  </td>
+  <td>
+    
+    <button *ngIf="booking.status === 'Pending'" 
+            class="btn-confirm" 
+            (click)="confirmBooking(booking, i)">
+      ✔ Confirm
+    </button>
+
+    
+    <button class="btn-cancel" (click)="deleteBooking(booking.id)">
+      ✖ Cancel
+    </button>
+  </td>
+</tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+
+

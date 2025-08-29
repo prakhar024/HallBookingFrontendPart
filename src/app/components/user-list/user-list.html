@@ -1,0 +1,26 @@
+<div class="user-container">
+  
+  <div class="header">
+    <h2>👥 User Management</h2>
+    <button class="btn-add" (click)="goToNewUser()">➕ Add User</button>
+  </div>
+
+  
+  <div class="user-grid">
+    <div class="user-card" *ngFor="let user of users">
+      <div class="user-avatar">
+        <span>{{ user.name[0] | uppercase }}</span>
+      </div>
+      <div class="user-info">
+        <h3>{{ user.name }}</h3>
+        <p>📧 {{ user.email }}</p>
+        <p>📞 {{ user.phone }}</p>
+      </div>
+      <div class="user-actions">
+        <button class="btn-edit" (click)="goToUserDetail(user.id)">✏ Edit</button>
+        <button class="btn-delete" (click)="deleteUser(user.id)">🗑 Delete</button>
+      </div>
+    </div>
+  </div>
+</div>
+

@@ -1,0 +1,15 @@
+<h2 class="title">✨ Available Halls ✨</h2>
+
+<div class="hall-container">
+  <div class="hall-card" *ngFor="let hall of halls">
+    <div class="hall-header">
+      <h3>{{ hall.name }}</h3>
+      <span class="price">₹{{ hall.pricePerDay }}/day</span>
+    </div>
+    <div class="hall-details">
+      <p>📍 {{ hall.location }}</p>
+      <p>👥 Capacity: {{ hall.capacity }}</p>
+    </div>
+  </div>
+</div>
+

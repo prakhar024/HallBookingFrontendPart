@@ -1,0 +1,70 @@
+
+<div class="form-container">
+  <h2>➕ Add New User</h2>
+
+  <form (ngSubmit)="submitUser()" #userForm="ngForm" class="user-form">
+    <!-- Name -->
+    <div class="form-step">
+      <label>Name</label>
+      <input
+        type="text"
+        [(ngModel)]="user.name"
+        name="name"
+        required
+        placeholder="Enter full name"
+        (input)="validateInputs()"
+      />
+      <div class="error" *ngIf="nameError">{{ nameError }}</div>
+    </div>
+
+    <!-- Email -->
+    <div class="form-step">
+      <label>Email</label>
+      <input
+        type="email"
+        [(ngModel)]="user.email"
+        name="email"
+        required
+        placeholder="Enter email address"
+        (input)="validateInputs()"
+      />
+      <div class="error" *ngIf="emailError">{{ emailError }}</div>
+    </div>
+
+    <!-- Phone -->
+    <div class="form-step">
+      <label>Phone</label>
+      <input
+        type="text"
+        [(ngModel)]="user.phone"
+        name="phone"
+        required
+        placeholder="Enter phone number"
+        (input)="validateInputs()"
+      />
+      <div class="error" *ngIf="phoneError">{{ phoneError }}</div>
+    </div>
+
+    <!-- Password -->
+    <div class="form-step">
+      <label>Password</label>
+      <input
+        type="password"
+        [(ngModel)]="user.password"
+        name="password"
+        required
+        placeholder="Enter password"
+        (input)="validateInputs()"
+      />
+      <div class="error" *ngIf="passwordError">{{ passwordError }}</div>
+    </div>
+
+    <!-- Actions -->
+    <div class="form-actions">
+      <button type="submit" [disabled]="!userForm.valid || nameError || emailError || phoneError || passwordError">
+        💾 Save User
+      </button>
+    </div>
+  </form>
+</div>
+
